@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">مسابقة مقتطفات التعليمات البرمجية</string>
+    <string name="app_name">Code Snippet Quest</string>
     <string name="login">تسجيل الدخول</string>
     <string name="register">تسجيل</string>
     <string name="welcome_back">مرحباً بك مرة أخرى في مسابقة مقتطفات التعليمات البرمجية</string>
@@ -22,11 +22,26 @@
     <string name="level_3">المستوى 3</string>
     <string name="level_4">المستوى 4</string>
     <string name="submit">إرسال</string>
-    <string name="hint">تلميح</string>
+    <string name="hint">💡 تلميح</string>
     <string name="pass">ناجح</string>
     <string name="fail">راسب</string>
     <string name="score">النتيجة</string>
     <string name="my_score_history">سجل نتائجي</string>
     <string name="english_arabic">English / عربي</string>
     <string name="dark_mode">الوضع الداكن</string>
+    <!-- New strings - Arabic translations -->
+    <string name="welcome_user">مرحباً، %1$s!</string>
+    <string name="level_locked">🔒 أكمل المستوى السابق لفتح هذا المستوى</string>
+    <string name="please_select_answer">يرجى اختيار إجابة</string>
+    <string name="level_complete_score">اكتمل المستوى! النتيجة: %1$d%%</string>
+    <string name="invalid_credentials">اسم المستخدم أو كلمة المرور غير صحيحة</string>
+    <string name="fill_all_fields">يرجى ملء جميع الحقول</string>
+    <string name="registration_successful">تم التسجيل! يرجى تسجيل الدخول.</string>
+    <string name="registration_failed">اسم المستخدم موجود بالفعل. جرب اسماً آخر.</string>
+    <string name="history_cleared">تم مسح سجل النتائج</string>
+    <!-- Level subtitles -->
+    <string name="level1_subtitle">المتغيرات والأنواع والبنية الأساسية</string>
+    <string name="level2_subtitle">الحلقات والشروط والمنطق</string>
+    <string name="level3_subtitle">الفئات والوراثة والكائنات</string>
+    <string name="level4_subtitle">الاستثناءات والتدفقات والأنماط</string>
 </resources>

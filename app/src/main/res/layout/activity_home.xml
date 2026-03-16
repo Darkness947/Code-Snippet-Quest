@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8FAFC"
+    android:background="@color/screen_background"
+    android:layoutDirection="locale"
     tools:context=".ui.home.HomeActivity">
 
     <TextView
@@ -14,7 +15,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:text="@string/app_name"
-        android:textColor="#1A237E"
+        android:textColor="@color/title_color"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:text="Welcome, User!"
-        android:textColor="#757575"
+        android:textColor="@color/text_secondary"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvAppName" />
@@ -58,14 +59,15 @@
             android:orientation="vertical"
             android:padding="24dp">
 
-            <!-- Level 1 Card -->
+            <!-- Level 1 Card (always unlocked) -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardLevel1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 app:cardCornerRadius="16dp"
-                app:cardElevation="4dp">
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="@color/card_background">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -90,15 +92,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/fundamentals"
-                            android:textColor="#212121"
+                            android:textColor="@color/text_primary"
                             android:textSize="18sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Variables, Types, and Basic Syntax"
-                            android:textColor="#757575"
+                            android:text="@string/level1_subtitle"
+                            android:textColor="@color/text_secondary"
                             android:textSize="12sp" />
                     </LinearLayout>
 
@@ -118,9 +120,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
+                android:alpha="0.5"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="2dp"
-                android:alpha="0.6">
+                app:cardBackgroundColor="@color/card_background">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -134,26 +137,29 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/tvLevel2Label"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="LEVEL 2"
-                            android:textColor="#9E9E9E"
+                            android:textColor="@color/level_locked_text"
                             android:textSize="12sp"
                             android:textStyle="bold" />
 
                         <TextView
+                            android:id="@+id/tvLevel2Name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/control_flow"
-                            android:textColor="#9E9E9E"
+                            android:textColor="@color/level_locked_text"
                             android:textSize="18sp"
                             android:textStyle="bold" />
 
                         <TextView
+                            android:id="@+id/tvLevel2Subtitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Loops, Conditionals, and Logic"
-                            android:textColor="#9E9E9E"
+                            android:text="@string/level2_subtitle"
+                            android:textColor="@color/level_locked_text"
                             android:textSize="12sp" />
                     </LinearLayout>
 
@@ -173,9 +179,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
+                android:alpha="0.5"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="2dp"
-                android:alpha="0.6">
+                app:cardBackgroundColor="@color/card_background">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -189,26 +196,29 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/tvLevel3Label"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="LEVEL 3"
-                            android:textColor="#9E9E9E"
+                            android:textColor="@color/level_locked_text"
                             android:textSize="12sp"
                             android:textStyle="bold" />
 
                         <TextView
+                            android:id="@+id/tvLevel3Name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/oop"
-                            android:textColor="#9E9E9E"
+                            android:textColor="@color/level_locked_text"
                             android:textSize="18sp"
                             android:textStyle="bold" />
 
                         <TextView
+                            android:id="@+id/tvLevel3Subtitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Classes, Inheritance, and Objects"
-                            android:textColor="#9E9E9E"
+                            android:text="@string/level3_subtitle"
+                            android:textColor="@color/level_locked_text"
                             android:textSize="12sp" />
                     </LinearLayout>
 
@@ -228,9 +238,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
+                android:alpha="0.5"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="2dp"
-                android:alpha="0.6">
+                app:cardBackgroundColor="@color/card_background">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -244,26 +255,29 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/tvLevel4Label"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="LEVEL 4"
-                            android:textColor="#9E9E9E"
+                            android:textColor="@color/level_locked_text"
                             android:textSize="12sp"
                             android:textStyle="bold" />
 
                         <TextView
+                            android:id="@+id/tvLevel4Name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/advanced"
-                            android:textColor="#9E9E9E"
+                            android:textColor="@color/level_locked_text"
                             android:textSize="18sp"
                             android:textStyle="bold" />
 
                         <TextView
+                            android:id="@+id/tvLevel4Subtitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Exceptions, Streams, and Patterns"
-                            android:textColor="#9E9E9E"
+                            android:text="@string/level4_subtitle"
+                            android:textColor="@color/level_locked_text"
                             android:textSize="12sp" />
                     </LinearLayout>
 
@@ -287,13 +301,13 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
-        android:backgroundTint="#FF9800"
+        android:backgroundTint="@color/orange_primary"
         android:drawableStart="@drawable/ic_history"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
         android:text="@string/score_history"
         android:textAllCaps="false"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/white"
         android:textStyle="bold"
         app:cornerRadius="12dp"
         app:layout_constraintBottom_toBottomOf="parent" />

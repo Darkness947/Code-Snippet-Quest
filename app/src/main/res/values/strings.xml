@@ -22,11 +22,26 @@
     <string name="level_3">Level 3</string>
     <string name="level_4">Level 4</string>
     <string name="submit">Submit</string>
-    <string name="hint">Hint</string>
+    <string name="hint">💡 Hint</string>
     <string name="pass">PASS</string>
     <string name="fail">FAIL</string>
     <string name="score">Score</string>
     <string name="my_score_history">My Score History</string>
     <string name="english_arabic">English / عربي</string>
     <string name="dark_mode">Dark Mode</string>
+    <!-- New strings -->
+    <string name="welcome_user">Welcome, %1$s!</string>
+    <string name="level_locked">🔒 Complete previous level to unlock this one</string>
+    <string name="please_select_answer">Please select an answer</string>
+    <string name="level_complete_score">Level Complete! Score: %1$d%%</string>
+    <string name="invalid_credentials">Invalid username or password</string>
+    <string name="fill_all_fields">Please fill all fields</string>
+    <string name="registration_successful">Registration successful! Please login.</string>
+    <string name="registration_failed">Username already exists. Try another.</string>
+    <string name="history_cleared">Score history cleared</string>
+    <!-- Level subtitles for home screen -->
+    <string name="level1_subtitle">Variables, Types, and Basic Syntax</string>
+    <string name="level2_subtitle">Loops, Conditionals, and Logic</string>
+    <string name="level3_subtitle">Classes, Inheritance, and Objects</string>
+    <string name="level4_subtitle">Exceptions, Streams, and Patterns</string>
 </resources>

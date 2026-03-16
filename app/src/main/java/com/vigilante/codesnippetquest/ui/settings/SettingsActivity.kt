@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import com.vigilante.codesnippetquest.data.DatabaseHelper
 import com.vigilante.codesnippetquest.databinding.ActivitySettingsBinding
 import com.vigilante.codesnippetquest.ui.auth.LoginActivity
+import com.vigilante.codesnippetquest.ui.home.HomeActivity
 import java.util.*
 
 class SettingsActivity : AppCompatActivity() {
@@ -17,18 +18,24 @@ class SettingsActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySettingsBinding
     private lateinit var dbHelper: DatabaseHelper
 
+    override fun attachBaseContext(newBase: Context) {
+        val prefs = newBase.getSharedPreferences("Settings", Context.MODE_PRIVATE)
+        val lang = prefs.getString("My_Lang", "en") ?: "en"
+        val locale = Locale(lang)
+        Locale.setDefault(locale)
+        val config = Configuration(newBase.resources.configuration)
+        config.setLocale(locale)
+        super.attachBaseContext(newBase.createConfigurationContext(config))
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        
-        // Load language preference before setting content view
-        val prefs = getSharedPreferences("Settings", Context.MODE_PRIVATE)
-        val language = prefs.getString("My_Lang", "en") ?: "en"
-        setLocale(language)
 
         binding = ActivitySettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         dbHelper = DatabaseHelper(this)
+        val prefs = getSharedPreferences("Settings", Context.MODE_PRIVATE)
         val userPrefs = getSharedPreferences("UserPrefs", MODE_PRIVATE)
         val userId = userPrefs.getInt("userId", -1)
 
@@ -37,28 +44,28 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         // Language Toggle
-        binding.switchLanguage.isChecked = language == "ar"
+        val currentLang = prefs.getString("My_Lang", "en") ?: "en"
+        binding.switchLanguage.isChecked = currentLang == "ar"
         binding.switchLanguage.setOnCheckedChangeListener { _, isChecked ->
             val newLang = if (isChecked) "ar" else "en"
-            setLocale(newLang)
             prefs.edit().putString("My_Lang", newLang).apply()
-            
-            // Restart activity to apply changes
-            val intent = intent
-            finish()
+
+            // Restart the entire app stack so all activities pick up the new locale
+            val intent = Intent(this, HomeActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
+            finish()
         }
 
         // Dark Mode Toggle
         val isDarkMode = prefs.getBoolean("DarkMode", false)
         binding.switchTheme.isChecked = isDarkMode
         binding.switchTheme.setOnCheckedChangeListener { _, isChecked ->
+            prefs.edit().putBoolean("DarkMode", isChecked).apply()
             if (isChecked) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                prefs.edit().putBoolean("DarkMode", true).apply()
             } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                prefs.edit().putBoolean("DarkMode", false).apply()
             }
         }
 
@@ -75,16 +82,8 @@ class SettingsActivity : AppCompatActivity() {
         binding.tvClearHistory.setOnClickListener {
             if (userId != -1) {
                 dbHelper.clearHistory(userId)
-                Toast.makeText(this, "History Cleared", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(com.vigilante.codesnippetquest.R.string.history_cleared), Toast.LENGTH_SHORT).show()
             }
         }
-    }
-
-    private fun setLocale(lang: String) {
-        val locale = Locale(lang)
-        Locale.setDefault(locale)
-        val config = Configuration()
-        config.setLocale(locale)
-        baseContext.resources.updateConfiguration(config, baseContext.resources.displayMetrics)
     }
 }

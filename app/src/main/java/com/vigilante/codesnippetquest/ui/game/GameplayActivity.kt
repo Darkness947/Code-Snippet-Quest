@@ -2,7 +2,6 @@ package com.vigilante.codesnippetquest.ui.game
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.vigilante.codesnippetquest.R
@@ -25,6 +24,16 @@ class GameplayActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Apply dark mode preference
+        val settingsPrefs = getSharedPreferences("Settings", MODE_PRIVATE)
+        val isDark = settingsPrefs.getBoolean("DarkMode", false)
+        if (isDark) {
+            androidx.appcompat.app.AppCompatDelegate.setDefaultNightMode(androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            androidx.appcompat.app.AppCompatDelegate.setDefaultNightMode(androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO)
+        }
+
         binding = ActivityGameplayBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -46,8 +55,20 @@ class GameplayActivity : AppCompatActivity() {
         }
 
         binding.btnHint.setOnClickListener {
-            Toast.makeText(this, "The correct answer is " + questions[currentQuestionIndex].correct, Toast.LENGTH_SHORT).show()
+            if (questions.isNotEmpty()) {
+                Toast.makeText(this, questions[currentQuestionIndex].hint, Toast.LENGTH_LONG).show()
+            }
         }
+    }
+
+    override fun attachBaseContext(newBase: android.content.Context) {
+        val prefs = newBase.getSharedPreferences("Settings", MODE_PRIVATE)
+        val lang = prefs.getString("My_Lang", "en") ?: "en"
+        val locale = Locale(lang)
+        Locale.setDefault(locale)
+        val config = android.content.res.Configuration(newBase.resources.configuration)
+        config.setLocale(locale)
+        super.attachBaseContext(newBase.createConfigurationContext(config))
     }
 
     private fun displayQuestion() {
@@ -56,10 +77,11 @@ class GameplayActivity : AppCompatActivity() {
         binding.pbProgress.progress = ((currentQuestionIndex + 1) * 100) / questions.size
         binding.tvQuestionText.text = q.text
         binding.tvSnippet.text = q.snippet
-        binding.btnOptionA.text = q.opA
-        binding.btnOptionB.text = q.opB
-        binding.btnOptionC.text = q.opC
-        binding.btnOptionD.text = q.opD
+        // Fix 4: prefix options with A/B/C/D labels
+        binding.btnOptionA.text = "A.  ${q.opA}"
+        binding.btnOptionB.text = "B.  ${q.opB}"
+        binding.btnOptionC.text = "C.  ${q.opC}"
+        binding.btnOptionD.text = "D.  ${q.opD}"
 
         resetOptionStyles()
         selectedAnswer = null
@@ -86,14 +108,14 @@ class GameplayActivity : AppCompatActivity() {
     private fun resetOptionStyles() {
         val options = listOf(binding.btnOptionA, binding.btnOptionB, binding.btnOptionC, binding.btnOptionD)
         options.forEach { button ->
-            button.setBackgroundTintList(getColorStateList(R.color.white))
-            button.setTextColor(getColor(R.color.black))
+            button.setBackgroundTintList(getColorStateList(R.color.option_bg))
+            button.setTextColor(getColor(R.color.option_text))
         }
     }
 
     private fun checkAnswer() {
         if (selectedAnswer == null) {
-            Toast.makeText(this, "Please select an answer", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.please_select_answer), Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -122,7 +144,8 @@ class GameplayActivity : AppCompatActivity() {
             else -> "Unknown"
         }
 
-        dbHelper.addHistoryRecord(userId, levelName, percentage, status, date)
+        // Fix 6: pass level number to history record
+        dbHelper.addHistoryRecord(userId, levelName, level, percentage, status, date)
 
         if (status == "PASS" && level < 4) {
             val currentUnlocked = dbHelper.getUnlockedLevel(userId)
@@ -131,7 +154,7 @@ class GameplayActivity : AppCompatActivity() {
             }
         }
 
-        Toast.makeText(this, "Level Complete! Score: $percentage%", Toast.LENGTH_LONG).show()
+        Toast.makeText(this, getString(R.string.level_complete_score, percentage), Toast.LENGTH_LONG).show()
         finish()
     }
 }

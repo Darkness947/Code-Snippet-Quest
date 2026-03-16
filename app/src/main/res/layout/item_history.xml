@@ -8,7 +8,8 @@
     android:layout_marginEnd="24dp"
     android:layout_marginBottom="8dp"
     app:cardCornerRadius="16dp"
-    app:cardElevation="2dp">
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="@color/card_background">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,7 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="LEVEL 1"
-                android:textColor="#757575"
+                android:textColor="@color/text_secondary"
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
@@ -36,8 +37,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="Basic Syntax Mastery"
-                android:textColor="#212121"
+                android:text="Fundamentals"
+                android:textColor="@color/text_primary"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -87,7 +88,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Oct 24, 2023"
-                android:textColor="#BDBDBD"
+                android:textColor="@color/text_secondary"
                 android:textSize="10sp" />
         </LinearLayout>
     </LinearLayout>

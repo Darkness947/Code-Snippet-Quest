@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8FAFC"
+    android:background="@color/screen_background"
+    android:layoutDirection="locale"
     tools:context=".ui.settings.SettingsActivity">
 
     <ImageView
@@ -24,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="@string/settings"
-        android:textColor="#1A237E"
+        android:textColor="@color/title_color"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/ivBack"
@@ -65,14 +66,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/language"
-                    android:textColor="#212121"
+                    android:textColor="@color/text_primary"
                     android:textSize="16sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/english_arabic"
-                    android:textColor="#757575"
+                    android:textColor="@color/text_secondary"
                     android:textSize="12sp" />
             </LinearLayout>
 
@@ -103,7 +104,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_toEndOf="@id/ivThemeIcon"
                 android:text="@string/dark_mode"
-                android:textColor="#212121"
+                android:textColor="@color/text_primary"
                 android:textSize="16sp" />
 
             <com.google.android.material.switchmaterial.SwitchMaterial
@@ -136,7 +137,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_toEndOf="@id/ivLogoutIcon"
                 android:text="@string/logout"
-                android:textColor="#212121"
+                android:textColor="@color/text_primary"
                 android:textSize="16sp" />
         </RelativeLayout>
 
@@ -150,7 +151,7 @@
         android:drawablePadding="8dp"
         android:gravity="center"
         android:text="@string/clear_score_history"
-        android:textColor="#F44336"
+        android:textColor="@color/red_fail"
         android:textSize="14sp"
         android:textStyle="bold"
         app:drawableStartCompat="@drawable/ic_delete"

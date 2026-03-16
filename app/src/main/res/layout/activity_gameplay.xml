@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8FAFC"
+    android:background="@color/screen_background"
+    android:layoutDirection="locale"
     tools:context=".ui.game.GameplayActivity">
 
     <TextView
@@ -14,7 +15,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:text="Level 1 - Question 1/3"
-        android:textColor="#1A237E"
+        android:textColor="@color/title_color"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,7 +43,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:text="What is the correct syntax to output 'Hello World' in Java?"
-        android:textColor="#212121"
+        android:textColor="@color/text_primary"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,7 +57,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
-        app:cardBackgroundColor="#1E1E1E"
+        app:cardBackgroundColor="@color/snippet_bg"
         app:cardCornerRadius="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -67,7 +68,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:text="public class Main {\n  public static void main(String[] args) {\n    System.out.println(\&quot;Hello World\&quot;);\n  }\n}"
+            android:text="// code snippet"
             android:textColor="#FFFFFF"
             android:fontFamily="monospace"
             android:textSize="14sp" />
@@ -92,12 +93,12 @@
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
             android:layout_margin="4dp"
-            android:backgroundTint="#FFFFFF"
-            android:text="Option A"
+            android:backgroundTint="@color/option_bg"
+            android:text="A. Option"
             android:textAllCaps="false"
-            android:textColor="#212121"
+            android:textColor="@color/option_text"
             app:cornerRadius="8dp"
-            app:strokeColor="#E0E0E0"
+            app:strokeColor="@color/divider_color"
             app:strokeWidth="1dp" />
 
         <Button
@@ -106,12 +107,12 @@
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
             android:layout_margin="4dp"
-            android:backgroundTint="#FFFFFF"
-            android:text="Option B"
+            android:backgroundTint="@color/option_bg"
+            android:text="B. Option"
             android:textAllCaps="false"
-            android:textColor="#212121"
+            android:textColor="@color/option_text"
             app:cornerRadius="8dp"
-            app:strokeColor="#E0E0E0"
+            app:strokeColor="@color/divider_color"
             app:strokeWidth="1dp" />
 
         <Button
@@ -120,12 +121,12 @@
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
             android:layout_margin="4dp"
-            android:backgroundTint="#FFFFFF"
-            android:text="Option C"
+            android:backgroundTint="@color/option_bg"
+            android:text="C. Option"
             android:textAllCaps="false"
-            android:textColor="#212121"
+            android:textColor="@color/option_text"
             app:cornerRadius="8dp"
-            app:strokeColor="#E0E0E0"
+            app:strokeColor="@color/divider_color"
             app:strokeWidth="1dp" />
 
         <Button
@@ -134,12 +135,12 @@
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
             android:layout_margin="4dp"
-            android:backgroundTint="#FFFFFF"
-            android:text="Option D"
+            android:backgroundTint="@color/option_bg"
+            android:text="D. Option"
             android:textAllCaps="false"
-            android:textColor="#212121"
+            android:textColor="@color/option_text"
             app:cornerRadius="8dp"
-            app:strokeColor="#E0E0E0"
+            app:strokeColor="@color/divider_color"
             app:strokeWidth="1dp" />
     </GridLayout>
 
@@ -149,9 +150,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginBottom="24dp"
-        android:backgroundTint="#F5F7FA"
+        android:backgroundTint="@color/card_background"
         android:text="@string/hint"
-        android:textColor="#1A237E"
+        android:textColor="@color/title_color"
         app:cornerRadius="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -163,7 +164,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
-        android:backgroundTint="#1A237E"
+        android:backgroundTint="@color/blue_primary"
         android:text="@string/submit"
         android:textColor="#FFFFFF"
         app:cornerRadius="12dp"
