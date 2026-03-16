@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark mode color overrides -->
+    <color name="screen_background">#121212</color>
+    <color name="card_background">#1E1E1E</color>
+    <color name="text_primary">#EEEEEE</color>
+    <color name="text_secondary">#BDBDBD</color>
+    <color name="title_color">#7986CB</color>
+    <color name="option_bg">#2C2C2C</color>
+    <color name="option_text">#EEEEEE</color>
+    <color name="divider_color">#424242</color>
+    <color name="splash_background">#FFFFFF</color>
+    <color name="snippet_bg">#0D0D0D</color>
+    <color name="level_locked_text">#757575</color>
+    <color name="level_active_label">#82B1FF</color>
+    <color name="bg_light">#121212</color>
+    <color name="white">#1E1E1E</color>
+    <color name="black">#EEEEEE</color>
+</resources>
