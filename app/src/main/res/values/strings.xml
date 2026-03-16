@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Code Snippet Quest</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="welcome_back">Welcome back to Code Snippet Quest</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="dont_have_account_register">Don\'t have an account? Register</string>
+    <string name="already_have_account">Already have an account? Login</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="score_history">Score History</string>
+    <string name="settings">Settings</string>
+    <string name="language">Language</string>
+    <string name="logout">Logout</string>
+    <string name="clear_score_history">Clear Score History</string>
+    <string name="fundamentals">Fundamentals</string>
+    <string name="control_flow">Control Flow</string>
+    <string name="oop">OOP</string>
+    <string name="advanced">Advanced</string>
+    <string name="level_1">Level 1</string>
+    <string name="level_2">Level 2</string>
+    <string name="level_3">Level 3</string>
+    <string name="level_4">Level 4</string>
+    <string name="submit">Submit</string>
+    <string name="hint">Hint</string>
+    <string name="pass">PASS</string>
+    <string name="fail">FAIL</string>
+    <string name="score">Score</string>
+    <string name="my_score_history">My Score History</string>
+    <string name="english_arabic">English / عربي</string>
+    <string name="dark_mode">Dark Mode</string>
+</resources>
