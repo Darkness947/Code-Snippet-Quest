@@ -73,9 +73,17 @@ class GameplayActivity : AppCompatActivity() {
 
     private fun displayQuestion() {
         val q = questions[currentQuestionIndex]
-        binding.tvLevelInfo.text = "Level $level - Question ${currentQuestionIndex + 1}/${questions.size}"
+        // Localized "Level X - Question Y/Z" header
+        binding.tvLevelInfo.text = getString(
+            R.string.level_question_info,
+            level,
+            currentQuestionIndex + 1,
+            questions.size
+        )
         binding.pbProgress.progress = ((currentQuestionIndex + 1) * 100) / questions.size
-        binding.tvQuestionText.text = q.text
+        // Show Arabic question text when Arabic locale is active
+        val isArabic = Locale.getDefault().language == "ar"
+        binding.tvQuestionText.text = if (isArabic) q.textAr else q.text
         binding.tvSnippet.text = q.snippet
         // Fix 4: prefix options with A/B/C/D labels
         binding.btnOptionA.text = "A.  ${q.opA}"

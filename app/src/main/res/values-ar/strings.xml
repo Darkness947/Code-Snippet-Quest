@@ -23,6 +23,7 @@
     <string name="level_4">المستوى 4</string>
     <string name="submit">إرسال</string>
     <string name="hint">💡 تلميح</string>
+    <string name="level_question_info">المستوى %1$d - السؤال %2$d/%3$d</string>
     <string name="pass">ناجح</string>
     <string name="fail">راسب</string>
     <string name="score">النتيجة</string>
