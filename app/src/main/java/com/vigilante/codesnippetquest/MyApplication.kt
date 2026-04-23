@@ -3,22 +3,26 @@ package com.vigilante.codesnippetquest
 import android.app.Application
 import android.content.Context
 import android.content.res.Configuration
-import androidx.appcompat.app.AppCompatDelegate
+import com.vigilante.codesnippetquest.data.AppDatabase
 import java.util.Locale
+
+interface AppContainer {
+    val database: AppDatabase
+}
+
+class DefaultAppContainer(private val context: Context) : AppContainer {
+    override val database: AppDatabase by lazy {
+        AppDatabase.getDatabase(context)
+    }
+}
 
 class MyApplication : Application() {
 
+    lateinit var container: AppContainer
+
     override fun onCreate() {
         super.onCreate()
-
-        // Apply dark mode preference at app startup
-        val prefs = getSharedPreferences("Settings", Context.MODE_PRIVATE)
-        val isDark = prefs.getBoolean("DarkMode", false)
-        if (isDark) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        } else {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        }
+        container = DefaultAppContainer(this)
     }
 
     override fun attachBaseContext(base: Context) {

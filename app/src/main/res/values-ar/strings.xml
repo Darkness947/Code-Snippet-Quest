@@ -21,12 +21,14 @@
     <string name="level_2">المستوى 2</string>
     <string name="level_3">المستوى 3</string>
     <string name="level_4">المستوى 4</string>
+    <string name="level_label">المستوى</string>
     <string name="submit">إرسال</string>
     <string name="hint">💡 تلميح</string>
     <string name="level_question_info">المستوى %1$d - السؤال %2$d/%3$d</string>
     <string name="pass">ناجح</string>
     <string name="fail">راسب</string>
     <string name="score">النتيجة</string>
+    <string name="score_format">النتيجة %1$d%%</string>
     <string name="my_score_history">سجل نتائجي</string>
     <string name="english_arabic">English / عربي</string>
     <string name="dark_mode">الوضع الداكن</string>
