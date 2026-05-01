@@ -3,6 +3,7 @@ package com.vigilante.codesnippetquest.ui.game
 import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -11,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -28,6 +30,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -79,17 +82,32 @@ fun GameplayScreen(
                     .fillMaxSize()
                     .padding(24.dp)
             ) {
-                Text(
-                    text = stringResource(
-                        id = R.string.level_question_info,
-                        level,
-                        uiState.currentQuestionIndex + 1,
-                        uiState.questions.size
-                    ),
-                    color = colorResource(id = R.color.title_color),
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Bold
-                )
+                // Header with Back Button
+                Row(
+                    modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    androidx.compose.foundation.Image(
+                        painter = painterResource(id = R.drawable.ic_back),
+                        contentDescription = "Back",
+                        modifier = Modifier
+                            .size(32.dp)
+                            .padding(4.dp)
+                            .clickable { onNavigateBack() }
+                    )
+                    Text(
+                        text = stringResource(
+                            id = R.string.level_question_info,
+                            level,
+                            uiState.currentQuestionIndex + 1,
+                            uiState.questions.size
+                        ),
+                        color = colorResource(id = R.color.title_color),
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier.padding(start = 16.dp)
+                    )
+                }
 
                 Spacer(modifier = Modifier.height(16.dp))
 

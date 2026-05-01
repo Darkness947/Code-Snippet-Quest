@@ -201,14 +201,40 @@ fun SettingsScreen(
 
         Spacer(modifier = Modifier.weight(1f))
 
+        var showClearDialog by remember { mutableStateOf(false) }
+
+        if (showClearDialog) {
+            androidx.compose.material3.AlertDialog(
+                onDismissRequest = { showClearDialog = false },
+                title = { Text(text = stringResource(id = R.string.clear_score_history)) },
+                text = { Text(text = "Are you sure you want to clear your score history?") },
+                confirmButton = {
+                    androidx.compose.material3.TextButton(onClick = {
+                        viewModel.clearHistory(userId)
+                        Toast.makeText(context, context.getString(R.string.history_cleared), Toast.LENGTH_SHORT).show()
+                        showClearDialog = false
+                    }) {
+                        Text(text = "Confirm", color = colorResource(id = R.color.red_fail))
+                    }
+                },
+                dismissButton = {
+                    androidx.compose.material3.TextButton(onClick = { showClearDialog = false }) {
+                        Text(text = "Dismiss", color = colorResource(id = R.color.text_primary))
+                    }
+                },
+                containerColor = colorResource(id = R.color.card_background),
+                titleContentColor = colorResource(id = R.color.title_color),
+                textContentColor = colorResource(id = R.color.text_primary)
+            )
+        }
+
         // Clear History
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(bottom = 48.dp)
                 .clickable {
-                    viewModel.clearHistory(userId)
-                    Toast.makeText(context, context.getString(R.string.history_cleared), Toast.LENGTH_SHORT).show()
+                    showClearDialog = true
                 },
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically

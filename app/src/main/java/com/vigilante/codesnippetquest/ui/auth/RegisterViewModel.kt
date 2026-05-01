@@ -20,7 +20,8 @@ class RegisterViewModel(private val dao: AppDao) : ViewModel() {
         }
         viewModelScope.launch {
             _registerState.value = RegisterState.Loading
-            val userId = dao.insertUser(User(username = username, password = password))
+            val hashedPassword = org.mindrot.jbcrypt.BCrypt.hashpw(password, org.mindrot.jbcrypt.BCrypt.gensalt())
+            val userId = dao.insertUser(User(username = username, password = hashedPassword))
             if (userId != -1L) {
                 _registerState.value = RegisterState.Success
             } else {

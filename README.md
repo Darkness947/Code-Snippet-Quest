@@ -15,6 +15,7 @@
 | Feature | Description |
 |---|---|
 | 🔐 **Authentication** | Register & login with local persistence |
+| 🔑 **Security** | Password hashing via bcrypt |
 | 🎯 **4 Levels** | Fundamentals → Control Flow → OOP → Advanced |
 | 🔒 **Level Unlocking** | Complete a level with ≥ 60% to unlock the next |
 | 🅰️ **A/B/C/D Options** | All answer choices are clearly labelled |

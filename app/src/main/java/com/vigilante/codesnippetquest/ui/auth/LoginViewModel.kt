@@ -19,9 +19,22 @@ class LoginViewModel(private val dao: AppDao) : ViewModel() {
         }
         viewModelScope.launch {
             _loginState.value = LoginState.Loading
-            val user = dao.loginUser(username, password)
+            val user = dao.getUserByUsername(username)
             if (user != null) {
-                _loginState.value = LoginState.Success(user.id)
+                try {
+                    if (org.mindrot.jbcrypt.BCrypt.checkpw(password, user.password)) {
+                        _loginState.value = LoginState.Success(user.id)
+                    } else {
+                        _loginState.value = LoginState.Error("invalid_credentials")
+                    }
+                } catch (e: Exception) {
+                    // Fallback for plaintext passwords from old database versions (optional, but good for UX in this case)
+                    if (password == user.password) {
+                         _loginState.value = LoginState.Success(user.id)
+                    } else {
+                         _loginState.value = LoginState.Error("invalid_credentials")
+                    }
+                }
             } else {
                 _loginState.value = LoginState.Error("invalid_credentials")
             }
