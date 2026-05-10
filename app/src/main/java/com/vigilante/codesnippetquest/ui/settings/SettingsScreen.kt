@@ -19,6 +19,7 @@ import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -204,22 +205,54 @@ fun SettingsScreen(
         var showClearDialog by remember { mutableStateOf(false) }
 
         if (showClearDialog) {
+            val outerContext = LocalContext.current
+            val outerConfig = android.content.res.Configuration(outerContext.resources.configuration)
+            val outerLayoutDir = androidx.compose.ui.platform.LocalLayoutDirection.current
+            
             androidx.compose.material3.AlertDialog(
                 onDismissRequest = { showClearDialog = false },
-                title = { Text(text = stringResource(id = R.string.clear_score_history)) },
-                text = { Text(text = "Are you sure you want to clear your score history?") },
+                title = {
+                    CompositionLocalProvider(
+                        androidx.compose.ui.platform.LocalContext provides outerContext,
+                        androidx.compose.ui.platform.LocalConfiguration provides outerConfig,
+                        androidx.compose.ui.platform.LocalLayoutDirection provides outerLayoutDir
+                    ) {
+                        Text(text = stringResource(id = R.string.clear_score_history))
+                    }
+                },
+                text = {
+                    CompositionLocalProvider(
+                        androidx.compose.ui.platform.LocalContext provides outerContext,
+                        androidx.compose.ui.platform.LocalConfiguration provides outerConfig,
+                        androidx.compose.ui.platform.LocalLayoutDirection provides outerLayoutDir
+                    ) {
+                        Text(text = stringResource(id = R.string.clear_history_confirm_message))
+                    }
+                },
                 confirmButton = {
                     androidx.compose.material3.TextButton(onClick = {
                         viewModel.clearHistory(userId)
                         Toast.makeText(context, context.getString(R.string.history_cleared), Toast.LENGTH_SHORT).show()
                         showClearDialog = false
                     }) {
-                        Text(text = "Confirm", color = colorResource(id = R.color.red_fail))
+                        CompositionLocalProvider(
+                            androidx.compose.ui.platform.LocalContext provides outerContext,
+                            androidx.compose.ui.platform.LocalConfiguration provides outerConfig,
+                            androidx.compose.ui.platform.LocalLayoutDirection provides outerLayoutDir
+                        ) {
+                            Text(text = stringResource(id = R.string.clear_history_confirm_yes), color = colorResource(id = R.color.red_fail))
+                        }
                     }
                 },
                 dismissButton = {
                     androidx.compose.material3.TextButton(onClick = { showClearDialog = false }) {
-                        Text(text = "Dismiss", color = colorResource(id = R.color.text_primary))
+                        CompositionLocalProvider(
+                            androidx.compose.ui.platform.LocalContext provides outerContext,
+                            androidx.compose.ui.platform.LocalConfiguration provides outerConfig,
+                            androidx.compose.ui.platform.LocalLayoutDirection provides outerLayoutDir
+                        ) {
+                            Text(text = stringResource(id = R.string.clear_history_confirm_no), color = colorResource(id = R.color.text_primary))
+                        }
                     }
                 },
                 containerColor = colorResource(id = R.color.card_background),

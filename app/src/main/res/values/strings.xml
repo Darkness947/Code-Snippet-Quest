@@ -13,6 +13,9 @@
     <string name="language">Language</string>
     <string name="logout">Logout</string>
     <string name="clear_score_history">Clear Score History</string>
+    <string name="clear_history_confirm_message">Are you sure you want to clear your score history?</string>
+    <string name="clear_history_confirm_yes">Confirm</string>
+    <string name="clear_history_confirm_no">Dismiss</string>
     <string name="fundamentals">Fundamentals</string>
     <string name="control_flow">Control Flow</string>
     <string name="oop">OOP</string>

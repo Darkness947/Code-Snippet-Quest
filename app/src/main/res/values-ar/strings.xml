@@ -13,6 +13,9 @@
     <string name="language">اللغة</string>
     <string name="logout">تسجيل الخروج</string>
     <string name="clear_score_history">مسح سجل النتائج</string>
+    <string name="clear_history_confirm_message">هل أنت متأكد أنك تريد مسح سجل نتائجك؟</string>
+    <string name="clear_history_confirm_yes">تأكيد</string>
+    <string name="clear_history_confirm_no">إلغاء</string>
     <string name="fundamentals">الأساسيات</string>
     <string name="control_flow">تدفق التحكم</string>
     <string name="oop">البرمجة كائنية التوجه</string>

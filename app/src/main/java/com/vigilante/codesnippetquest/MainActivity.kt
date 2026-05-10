@@ -84,7 +84,8 @@ fun LocalizedContent(appSettings: AppSettings, factory: ViewModelFactory) {
 
     CompositionLocalProvider(
         androidx.compose.ui.platform.LocalContext provides localizedContext,
-        androidx.compose.ui.platform.LocalLayoutDirection provides layoutDirection
+        androidx.compose.ui.platform.LocalLayoutDirection provides layoutDirection,
+        androidx.compose.ui.platform.LocalConfiguration provides config
     ) {
         CodeSnippetQuestTheme(
             darkTheme = appSettings.isDarkMode.value,

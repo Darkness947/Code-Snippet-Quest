@@ -26,12 +26,6 @@
 
 ---
 
-## 📱 Screenshots
-
-> *Coming soon*
-
----
-
 ## 🗺️ App Flow
 
 ```
@@ -168,16 +162,4 @@ git clone https://github.com/Darkness947/Code-Snippet-Quest.git
 
 ---
 
-## 🤝 Contributing
-
-Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
-
----
-
-## 📄 License
-
 This project is for educational purposes.
-
----
-
-*Built with ❤️ using Jetpack Compose & Kotlin*
